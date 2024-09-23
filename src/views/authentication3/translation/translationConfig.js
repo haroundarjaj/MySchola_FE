@@ -1,6 +1,6 @@
 import en from './en';
-import ar from './ar';
 import fr from './fr';
+import es from './es';
 
 const authTranslationConfig = [
     {
@@ -10,13 +10,14 @@ const authTranslationConfig = [
     },
     {
         name: "authentication",
-        lng: "ar",
-        res: ar
-    },
-    {
-        name: "authentication",
         lng: "fr",
         res: fr
+    },
+
+    {
+        name: "authentication",
+        lng: "es",
+        res: es
     }
 ]
 export default authTranslationConfig;

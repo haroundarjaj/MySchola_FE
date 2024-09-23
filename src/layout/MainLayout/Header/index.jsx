@@ -14,6 +14,7 @@ import ProfileSection from './ProfileSection';
 
 // assets
 import { IconMenu2 } from '@tabler/icons-react';
+import LanguageSwitcher from './LanguageSwitcher';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -62,7 +63,8 @@ const Header = ({ handleLeftDrawerToggle }) => {
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
 
-      {/* notification & profile */}
+      {/* language switcher, notification & profile */}
+      <LanguageSwitcher />
       <NotificationSection />
       <ProfileSection />
     </>
