@@ -14,7 +14,9 @@ import Logo from 'ui-component/Logo';
 import AuthRegister from './AuthRegister';
 import AuthFooter from 'ui-component/cards/AuthFooter';
 
-// assets
+//logo
+import logo from 'assets/images/MyScholaLogo.png';
+import logoTitle from 'assets/images/MyScholaTitle.png';
 
 // ===============================|| AUTH3 - REGISTER ||=============================== //
 
@@ -28,10 +30,19 @@ const Register = () => {
           <Grid container justifyContent="center" alignItems="center" sx={{ minHeight: 'calc(100vh - 68px)' }}>
             <Grid item sx={{ m: { xs: 1, sm: 3 }, mb: 0 }}>
               <AuthCardWrapper>
-                <Grid container spacing={2} alignItems="center" justifyContent="center">
+                <Grid container alignItems="center" justifyContent="center">
                   <Grid item sx={{ mb: 3 }}>
-                    <Link to="#" aria-label="theme logo">
-                      <Logo />
+                    <Link to="#" aria-label="logo">
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          alignItems: "center"
+                        }}>
+                        <img src={logo} alt="MySchola" width="100" />
+                        <img src={logoTitle} alt="MySchola" width="100" />
+                      </div>
                     </Link>
                   </Grid>
                   <Grid item xs={12}>

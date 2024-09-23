@@ -6,12 +6,20 @@ import Stack from '@mui/material/Stack';
 // ==============================|| FOOTER - AUTHENTICATION 2 & 3 ||============================== //
 
 const AuthFooter = () => (
-  <Stack direction="row" justifyContent="center">
+  <Stack
+    direction="row"
+    justifyContent="center"
+    style={{
+      position: 'fixed',
+      bottom: 0,
+      right: 20
+    }}
+  >
     {/* <Typography variant="subtitle2" component={Link} href="https://berrydashboard.io" target="_blank" underline="hover">
       berrydashboard.io
     </Typography> */}
     <Typography variant="subtitle2" component={Link} href="https://darcreation.net/portfolio" target="_blank" underline="hover">
-      &copy; {`Haroun Darjaj \(darTech)`}
+      {`Haroun Darjaj \(darTech)`} &copy; 2024
     </Typography>
   </Stack>
 );
