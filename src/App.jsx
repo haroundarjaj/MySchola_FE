@@ -13,6 +13,10 @@ import themes from 'themes';
 // project imports
 import NavigationScroll from 'layout/NavigationScroll';
 
+//intialize translations
+import "./i18n/translationResources";
+
+
 // ==============================|| APP ||============================== //
 
 const App = () => {

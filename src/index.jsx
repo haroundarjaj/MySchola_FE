@@ -26,6 +26,7 @@ import '@fontsource/poppins/700.css';
 
 // style + assets
 import 'assets/scss/style.scss';
+import './i18n/i18n';
 import reportWebVitals from 'reportWebVitals';
 
 const container = document.getElementById('root');

@@ -16,12 +16,15 @@ import AuthFooter from 'ui-component/cards/AuthFooter';
 //logo
 import logo from 'assets/images/MyScholaLogo.png';
 import logoTitle from 'assets/images/MyScholaTitle.png';
-
+import { useTranslation } from 'react-i18next';
+import "./translation/translationConfig";
 
 // ================================|| AUTH3 - LOGIN ||================================ //
 
 const Login = () => {
   const downMD = useMediaQuery((theme) => theme.breakpoints.down('md'));
+
+  const tAuthentication = useTranslation('authentication').t;
 
   return (
     <AuthWrapper1>
@@ -50,7 +53,7 @@ const Login = () => {
                       <Grid item>
                         <Stack alignItems="center" justifyContent="center" spacing={1}>
                           <Typography color="secondary.main" gutterBottom variant={downMD ? 'h3' : 'h2'}>
-                            Hi, Welcome Back
+                            {tAuthentication("WELCOME")}
                           </Typography>
                           <Typography variant="caption" fontSize="16px" textAlign={{ xs: 'center', md: 'inherit' }}>
                             Enter your credentials to continue
