@@ -1,0 +1,28 @@
+const locale = {
+    title: "Bonjour, bienvenue !",
+    subtitle: "Entrez vos identifiants pour continuer",
+    email: "Adresse e-mail",
+    password: "Mot de passe",
+    remember_me: "Se souvenir de moi",
+    forgot_password: "Mot de passe oublié ?",
+    sign_in: "Se connecter",
+    sign_up: "S'inscrire",
+    dont_have_account: "Vous n'avez pas de compte ?",
+    already_have_account: "Vous avez déjà un compte ?",
+    first_name: "Prénom",
+    last_name: "Nom",
+    weak: "Faible",
+    poor: "Médiocre",
+    normal: "Normal",
+    good: "Bon",
+    strong: "Fort",
+    valid_email_error: "Doit être une adresse e-mail valide",
+    email_required: "L'adresse e-mail est obligatoire",
+    password_required: "Le mot de passe est obligatoire",
+    user_not_approved: "Le compte utilisateur n'a pas encore été approuvé par l'administrateur",
+    user_disabled: "Compte utilisateur désactivé",
+    login_failed: "La connexion a échoué, veuillez réessayer.",
+    bad_credentials: "Email ou mot de passe incorrect, veuillez réessayer.",
+    session_expired: "La session a expiré, veuillez vous reconnecter"
+}
+export default locale;

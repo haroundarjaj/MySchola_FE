@@ -1,0 +1,28 @@
+const locale = {
+    title: "Hola, bienvenido de nuevo!",
+    subtitle: "Ingresa tus credenciales para continuar",
+    email: "Dirección de correo electrónico",
+    password: "Contraseña",
+    remember_me: "Recuérdame",
+    forgot_password: "¿Olvidaste tu contraseña?",
+    sign_in: "Iniciar sesión",
+    sign_up: "Registrarse",
+    dont_have_account: "¿No tienes una cuenta?",
+    already_have_account: "¿Ya tienes una cuenta?",
+    first_name: "Nombre",
+    last_name: "Apellido",
+    weak: "Débil",
+    poor: "Pobre",
+    normal: "Normal",
+    good: "Bueno",
+    strong: "Fuerte",
+    valid_email_error: "Debe ser un correo electrónico válido",
+    email_required: "Se requiere un correo electrónico",
+    password_required: "Se requiere una contraseña",
+    user_not_approved: "La cuenta de usuario aún no ha sido aprobada por el administrador",
+    user_disabled: "Cuenta de usuario deshabilitada",
+    login_failed: "Error al iniciar sesión. Inténtalo nuevamente.",
+    bad_credentials: "Correo electrónico o contraseña incorrectos, por favor inténtelo nuevamente.",
+    session_expired: "La sesión ha expirado, por favor inicie sesión nuevamente"
+}
+export default locale;

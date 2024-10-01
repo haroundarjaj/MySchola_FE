@@ -4,6 +4,10 @@
 // third-party
 @import 'react-perfect-scrollbar/dist/css/styles.css';
 
+input::-ms-clear, input::-ms-reveal {
+    display: none;
+}
+
 // ==============================|| LIGHT BOX ||============================== //
 .fullscreen .react-images__blanket {
   z-index: 1200;

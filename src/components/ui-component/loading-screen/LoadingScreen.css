@@ -1,0 +1,83 @@
+/* LoadingScreen.css */
+.loading-screen {
+    background-image: url('../../../assets/images/animatedBackground1.svg');
+    /* Replace with your image path */
+    background-size: cover;
+    /* Ensure the image covers the entire box */
+    background-position: right 0% top 30%;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Prevent the image from repeating */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container {
+    animation: bounceRotate 3s ease-in-out infinite;
+    /* Combined bounce and rotate animation */
+}
+
+.logo {
+    width: 150px;
+    /* Adjust size as needed */
+    height: auto;
+    display: block;
+    /* Center logo */
+}
+
+.logo-title {
+    width: 150px;
+    height: auto;
+    display: block;
+}
+
+.loading-indicator {
+    width: 50px;
+    height: auto;
+    display: block;
+}
+
+/* Keyframes for the combined bounce, rotate, and scale animation */
+@keyframes bounceRotate {
+
+    0%,
+    50%,
+    100% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        /* Start at original position, no rotation */
+    }
+
+    10% {
+        transform: translateY(-40px) rotate(15deg) scale(1.1);
+        /* Bounce up, rotate, and scale up */
+    }
+
+    25% {
+        transform: translateY(0) rotate(-15deg) scale(1);
+        /* Return to original position, slight rotation */
+    }
+
+    40% {
+        transform: translateY(-20px) rotate(10deg) scale(1.05);
+        /* Bounce down with rotation */
+    }
+
+    60% {
+        transform: translateY(-40px) rotate(-15deg) scale(1.1);
+        /* Bounce up, rotate, and scale up */
+    }
+
+    75% {
+        transform: translateY(0) rotate(15deg) scale(1);
+        /* Return to original position, slight rotation */
+    }
+
+    90% {
+        transform: translateY(-20px) rotate(-10deg) scale(1.05);
+        /* Bounce down with rotation */
+    }
+}

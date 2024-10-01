@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 
 // project imports
 import App from './App';
-import reducer from './store/reducer';
+import reducer from './store/reducers';
 
 // google-fonts
 import '@fontsource/roboto/400.css';
@@ -26,12 +26,13 @@ import '@fontsource/poppins/700.css';
 
 // style + assets
 import 'assets/scss/style.scss';
-import './i18n/i18n';
-import reportWebVitals from 'reportWebVitals';
+import './utils/i18n/i18n';
+import reportWebVitals from './reportWebVitals';
+import store from './store/index';
 
 const container = document.getElementById('root');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
-const store = configureStore({ reducer });
+// const store = configureStore({ reducer });
 
 // ==============================|| REACT DOM RENDER  ||============================== //
 
