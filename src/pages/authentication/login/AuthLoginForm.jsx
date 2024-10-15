@@ -18,25 +18,29 @@ import AnimateButton from 'components/ui-component/extended/AnimateButton';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from 'store/slices/authSlice';
 
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useNotification } from 'utils/NotificationProvider';
+import ForgotPasswordDialog from '../ForgotPasswordDialog';
 
 
 const AuthLoginForm = ({ ...others }) => {
   const theme = useTheme();
   const [isRemember, setIsRemember] = useState(true);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const tAuth = useTranslation("authentication").t;
+  const tGeneral = useTranslation("general").t;
+  const { showNotification } = useNotification();
 
 
   const [showPassword, setShowPassword] = useState(false);
+  const [openForgotPasswordDialog, setOpenForgotPasswordDialog] = useState(false);
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -57,7 +61,8 @@ const AuthLoginForm = ({ ...others }) => {
         console.log(response)
       })
     } catch (err) {
-      alert(tAuth(err));
+      showNotification(tGeneral(err), "error")
+
     } finally {
       setSubmitting(false);
     }
@@ -65,6 +70,10 @@ const AuthLoginForm = ({ ...others }) => {
 
   return (
     <>
+      <ForgotPasswordDialog
+        open={openForgotPasswordDialog}
+        handleClose={() => setOpenForgotPasswordDialog(false)}
+      />
       <Formik
         initialValues={{
           email: 'super@admin.com',
@@ -135,7 +144,7 @@ const AuthLoginForm = ({ ...others }) => {
                 }
                 label={tAuth('remember_me')}
               />
-              <Typography variant="subtitle1" color="secondary" sx={{ textDecoration: 'none', cursor: 'pointer' }}>
+              <Typography variant="subtitle1" color="secondary" sx={{ textDecoration: 'none', cursor: 'pointer' }} onClick={() => setOpenForgotPasswordDialog(true)}>
                 {tAuth('forgot_password')}
               </Typography>
             </Stack>

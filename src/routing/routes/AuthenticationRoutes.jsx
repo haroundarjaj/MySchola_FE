@@ -5,9 +5,10 @@ import Loadable from 'components/ui-component/Loadable';
 import MinimalLayout from 'components/layout/MinimalLayout';
 import GuardRoute from 'routing/GuardRoute';
 
-// login option 3 routing
-const AuthLogin = Loadable(lazy(() => import('pages/authentication/Login')));
-const AuthRegister = Loadable(lazy(() => import('pages/authentication/Register')));
+// login routing
+const AuthLogin = Loadable(lazy(() => import('pages/authentication/login/Login')));
+const AuthRegister = Loadable(lazy(() => import('pages/authentication/register/Register')));
+const AuthResetPassword = Loadable(lazy(() => import('pages/authentication/reset-password/AuthResetPassword')));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
@@ -22,6 +23,11 @@ const AuthenticationRoutes = {
     {
       path: '/register',
       element: <GuardRoute element={<AuthRegister />} />
+    },
+    ,
+    {
+      path: '/reset-password',
+      element: <GuardRoute element={<AuthResetPassword />} />
     }
   ]
 };

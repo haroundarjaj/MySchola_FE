@@ -17,19 +17,15 @@ export const login = createAsyncThunk(
     async ({ email, password, isRemember }, { rejectWithValue }) => {
         try {
             const response = await axios.post(`${import.meta.env.VITE_APP_API_URL}/api/auth/login`, { email, password });
-            if (response.data?.user?.active && response.data?.user?.approved) {
-                if (isRemember) {
-                    localStorage.setItem('token', response.data.token);
-                }
-                else sessionStorage.setItem('token', response.data.token);
-                return { ...response.data, isRemember };
-            } else if (!response.data?.user?.approved) {
-                return rejectWithValue('user_not_approved');
+            if (isRemember) {
+                localStorage.setItem('token', response.data.token);
             }
-            return rejectWithValue('user_disabled');
+            else sessionStorage.setItem('token', response.data.token);
+            return { ...response.data, isRemember };
         } catch (error) {
             console.log(error)
-            return rejectWithValue(error.response?.data?.code);
+            if (error.response?.data?.code) return rejectWithValue(error.response?.data?.code);
+            return rejectWithValue(error.code)
         }
     });
 

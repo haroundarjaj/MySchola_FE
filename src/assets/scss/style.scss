@@ -1,8 +1,20 @@
 // color variants
 @import 'themes-vars.module.scss';
 
+// mixins
+@import 'mixins';
+
 // third-party
 @import 'react-perfect-scrollbar/dist/css/styles.css';
+
+
+// ==============================|| Styles ||============================== //
+
+.center-div {
+  @include flex-center;
+  background-color: aqua;
+}
+
 
 input::-ms-clear, input::-ms-reveal {
     display: none;
@@ -56,6 +68,7 @@ input::-ms-clear, input::-ms-reveal {
     background-color: transparent;
   }
 }
+
 
 // ==============================|| ANIMATION KEYFRAMES ||============================== //
 

@@ -5,14 +5,15 @@ import Box from '@mui/material/Box';
 
 // project import
 import MainCard from 'components/ui-component/cards/MainCard';
+import { display } from '@mui/system';
 
 // ==============================|| AUTHENTICATION CARD WRAPPER ||============================== //
 
-const AuthCardWrapper = ({ children, ...other }) => (
+const AuthCardWrapper = ({ children, contentType, ...other }) => (
   <MainCard
     sx={{
-      maxWidth: { xs: 400, lg: 475 },
-      margin: { xs: 2.5, md: 3 },
+      maxWidth: contentType === "login" ? { xs: 450, lg: 525 } : { xs: 800, lg: 900 },
+      margin: { xs: 1, md: 3 },
       '& > *': {
         flexGrow: 1,
         flexBasis: '50%'

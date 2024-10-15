@@ -19,6 +19,8 @@ import { checkAuthentication } from 'store/slices/authSlice';
 import { useEffect, useState } from 'react';
 import LoadingScreen from 'components/ui-component/loading-screen';
 import { NotificationProvider } from 'utils/NotificationProvider';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 
 // ==============================|| APP ||============================== //
@@ -38,25 +40,27 @@ const App = () => {
     if (!isLoading) {
       setTimeout(() => {
         setShowLoading(false);
-      }, 3000);
+      }, 100);
     }
   }, [isLoading])
 
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes(customization)}>
-        <CssBaseline />
-        <NotificationProvider>
-          <NavigationScroll>
-            {showLoading ? (
-              <LoadingScreen />
-            ) : (
-              <NavigationScroll>
-                <RouterProvider router={router} />
-              </NavigationScroll>
-            )}
-          </NavigationScroll>
-        </NotificationProvider>
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+          <CssBaseline />
+          <NotificationProvider>
+            <NavigationScroll>
+              {showLoading ? (
+                <LoadingScreen />
+              ) : (
+                <NavigationScroll>
+                  <RouterProvider router={router} />
+                </NavigationScroll>
+              )}
+            </NavigationScroll>
+          </NotificationProvider>
+        </LocalizationProvider>
       </ThemeProvider>
     </StyledEngineProvider>
   );

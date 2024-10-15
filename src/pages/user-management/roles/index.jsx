@@ -6,12 +6,14 @@ import MainCard from 'components/ui-component/cards/MainCard';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRoles } from 'store/slices/roleSlice';
+import { useNotification } from 'utils/NotificationProvider';
 
 // ==============================|| SAMPLE PAGE ||============================== //
 
 const RolesPage = () => {
 
   const dispatch = useDispatch();
+  const { showNotification } = useNotification();
   const { roles, fetched } = useSelector((state) => state.role)
 
   const fetchData = async () => {
@@ -27,7 +29,7 @@ const RolesPage = () => {
     }
     catch (error) {
       console.log(error)
-      alert(error)
+      showNotification(error, "warning")
     }
   }
 
