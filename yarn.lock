@@ -3024,10 +3024,10 @@
     "tiny-warning" "^1.0.2"
     "tslib" "^2.0.0"
 
-"framer-motion@^11.0.6":
-  "integrity" "sha512-cW11Pu53eDAXUEhv5hEiWuIXWhfkbV32PlgVISn7jRdcAiVrJ1S03YQQ0/DzoswGYYwKi4qYmHHjCzAH52eSdQ=="
-  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-11.1.7.tgz"
-  "version" "11.1.7"
+"framer-motion@^11.11.8":
+  "integrity" "sha512-mnGQNEoz99GtFXBBPw+Ag5K4FcfP5XrXxrxHz+iE4Lmg7W3sf2gKmGuvfkZCW/yIfcdv5vJd6KiSPETH1Pw68Q=="
+  "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-11.11.8.tgz"
+  "version" "11.11.8"
   dependencies:
     "tslib" "^2.4.0"
 

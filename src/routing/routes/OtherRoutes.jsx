@@ -2,10 +2,10 @@ import { lazy } from 'react';
 
 import Loadable from 'components/ui-component/Loadable';
 import MainLayout from 'components/layout/MainLayout';
-import Unauthorized from 'pages/unauthorized/Unauthorized';
 import PrivateRoute from 'routing/PrivateRoute';
 
-const NotFound = Loadable(lazy(() => import('pages/not-found')));
+const NotFound = Loadable(lazy(() => import('pages/404')));
+const Unauthorized = Loadable(lazy(() => import('pages/403')));
 
 const OtherRoutes = {
   path: '/',
