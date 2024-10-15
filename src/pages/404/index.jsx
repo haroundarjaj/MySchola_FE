@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import styled from '@emotion/styled';
 import './404-style.css';
+import { useTranslation } from 'react-i18next';
 
 function Error404Page() {
+
+    const tGeneral = useTranslation("general").t;
+
     return (
         <div className='container' >
             <div className="sub-container">
@@ -93,12 +97,12 @@ function Error404Page() {
                         color="text.secondary"
                         className="h5"
                     >
-                        The page you requested could not be found.
+                        {tGeneral('page_requested_not_found')}
                     </Typography>
                 </motion.div>
 
                 <Link className="link" to="/">
-                    Back to Dashboard
+                    {tGeneral('back_to_dashboard')}
                 </Link>
             </div>
         </div>

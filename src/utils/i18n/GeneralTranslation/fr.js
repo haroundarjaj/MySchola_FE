@@ -16,6 +16,9 @@ const locale = {
     authentication_failed: "L'authentification a échoué, veuillez réessayer plus tard.",
     cancel: "Annuler",
     confirm: "Confirmer",
+    page_requested_not_found: "La page que vous avez demandée n'a pas pu être trouvée.",
+    page_requested_restricted: "La page que vous avez demandée a un accès restreint.",
+    back_to_dashboard: "Retour au tableau de bord"
 }
 
 export default locale;
