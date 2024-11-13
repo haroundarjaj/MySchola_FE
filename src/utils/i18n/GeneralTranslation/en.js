@@ -1,4 +1,4 @@
-const locale = {
+const data = {
     welcome: "Welcome",
     account_settings: "Account settings",
     logout: "Logout",
@@ -18,7 +18,34 @@ const locale = {
     confirm: "Confirm",
     page_requested_not_found: "The page you requested could not be found.",
     page_requested_restricted: "The page you requested has restricted access.",
-    back_to_dashboard: "Back to Dashboard"
+    back_to_dashboard: "Back to Dashboard",
+    first_name: "First Name",
+    last_name: "Last Name",
+    address: "Address",
+    gender: "Gender",
+    birth_date: "Birth Date",
+    male: "Male",
+    female: "Female",
+    email: "Email Address",
+    password: "Password",
+    activated: "Activated",
+    image: "Image",
+    phone_number: "Phone Number",
+    user: "Usuario",
+    active: "Active",
+    blocked: "Blocked",
+    edit: "Edit",
+    delete: "Delete",
+    actions: "Actions",
+    image_tap: "Tap to upload an image.",
+    image_drop: "Drop the image here.",
+    invalid_file_type: "Invalid file type.",
+    invalid_file_type_message: "Invalid file type. Please upload an image.",
+    invalid_image_size: "Invalid image size.",
+    invalid_image_size_message: "Invalid image size. Please choose an image within the size limits.",
+    save: "Save",
+    close: "Close",
+    upload_image: "Upload Image"
 }
 
-export default locale;
+export default data;

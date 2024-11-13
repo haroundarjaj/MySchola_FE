@@ -15,6 +15,7 @@ import ProfileSection from './ProfileSection';
 // assets
 import { IconMenu2 } from '@tabler/icons-react';
 import LanguageSwitcher from './LanguageSwitcher';
+import FullScreenButton from './FullScreen';
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -65,6 +66,7 @@ const Header = ({ handleLeftDrawerToggle }) => {
 
       {/* language switcher, notification & profile */}
       <LanguageSwitcher />
+      <FullScreenButton />
       <NotificationSection />
       <ProfileSection />
     </>

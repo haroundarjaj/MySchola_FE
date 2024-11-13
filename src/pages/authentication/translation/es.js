@@ -1,4 +1,4 @@
-const locale = {
+const data = {
     login_title: "Hola, bienvenido de nuevo!",
     login_subtitle: "Ingresa tus credenciales para continuar",
     register_title: "Registrarse",
@@ -9,19 +9,12 @@ const locale = {
     forgot_password_subtitle: "Ingrese su correo electrónico a continuación para recibir un enlace para restablecer su contraseña.",
     send_me_reset: "Envíame el enlace de reinicio",
     confirm_password: "Confirmar Contraseña",
-    email: "Dirección de correo electrónico",
-    password: "Contraseña",
     remember_me: "Recuérdame",
     forgot_password: "¿Olvidaste tu contraseña?",
     sign_in: "Iniciar sesión",
     sign_up: "Registrarse",
     dont_have_account: "¿No tienes una cuenta?",
     already_have_account: "¿Ya tienes una cuenta?",
-    first_name: "Nombre",
-    last_name: "Apellido",
-    address: "Dirección",
-    gender: "Sexo",
-    birth_date: "Fecha de nacimiento",
     weak: "Débil",
     poor: "Pobre",
     normal: "Normal",
@@ -35,11 +28,9 @@ const locale = {
     password_not_strong_enough: "La contraseña no es lo suficientemente segura",
     passwords_not_matching: "Las contraseñas no coinciden",
     user_account_is_locked: "La cuenta de usuario está bloqueada. Comuníquese con el administrador para obtener más información",
-    male: "Masculino",
-    female: "Femenina",
     password_update_success: "Contraseña actualizada exitosamente",
     reset_link_expired: "Este enlace de restablecimiento ya expiró, solicite uno nuevo desde la interfaz de inicio de sesión.",
     token_expired: "Enlace caducado",
     token_already_sent: "Password reset link already sent to this email",
 }
-export default locale;
+export default data;

@@ -33,7 +33,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar';
 import MainCard from 'components/ui-component/cards/MainCard';
 import Transitions from 'components/ui-component/extended/Transitions';
 import UpgradePlanCard from './UpgradePlanCard';
-import User1 from 'assets/images/users/super-admin-avatar.png';
+import User1 from 'assets/images/avatars/super-admin-avatar.png';
 
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons-react';

@@ -1,4 +1,4 @@
-const locale = {
+const data = {
     welcome: "Bienvenue",
     account_settings: "Paramètres du compte",
     logout: "Déconnexion",
@@ -18,7 +18,34 @@ const locale = {
     confirm: "Confirmer",
     page_requested_not_found: "La page que vous avez demandée n'a pas pu être trouvée.",
     page_requested_restricted: "La page que vous avez demandée a un accès restreint.",
-    back_to_dashboard: "Retour au tableau de bord"
+    back_to_dashboard: "Retour au tableau de bord",
+    first_name: "Prénom",
+    last_name: "Nom",
+    address: "Adresse",
+    gender: "Sexe",
+    birth_date: "Date de naissance",
+    male: "Mâle",
+    female: "Femelle",
+    email: "Adresse e-mail",
+    password: "Mot de passe",
+    activated: "Activé",
+    image: "Image",
+    phone_number: "Tél",
+    user: "Utilisateur",
+    active: "Activé",
+    blocked: "Bloqué",
+    edit: "Modifier",
+    delete: "Supprimer",
+    actions: "Actions",
+    image_tap: "Appuyez pour télécharger une image.",
+    image_drop: "Déposez l'image ici.",
+    invalid_file_type: "Type de fichier non valide.",
+    invalid_file_type_message: "Type de fichier non valide. Veuillez télécharger une image.",
+    invalid_image_size: "Taille d'image non valide.",
+    invalid_image_size_message: "Taille d'image non valide. Veuillez choisir une image dans les limites de taille.",
+    save: "Sauvegarder",
+    close: "Fermer",
+    upload_image: "Upload Image"
 }
 
-export default locale;
+export default data;

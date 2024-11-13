@@ -40,8 +40,8 @@ const Register = () => {
                       justifyContent: "center",
                       alignItems: "center"
                     }}>
-                    <img src={logo} alt="MySchola" width="150" />
-                    <img src={logoTitle} alt="MySchola" width="150" />
+                    <img src={logo} alt="MySchola" width={downMD ? "100" : "150"} />
+                    <img src={logoTitle} alt="MySchola" width={downMD ? "100" : "150"} />
                   </div>
                 </Link>
               </Grid>

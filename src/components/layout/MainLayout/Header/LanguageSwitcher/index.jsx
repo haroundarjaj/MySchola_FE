@@ -9,15 +9,19 @@ import { useTranslation } from 'react-i18next';
 import enFlag from 'assets/images/flags/US.svg';
 import frFlag from 'assets/images/flags/FR.svg';
 import esFlag from 'assets/images/flags/ES.svg';
+import { ButtonBase } from '@mui/material';
+import { useTheme } from '@emotion/react';
+import { Box } from '@mui/system';
 
 function LanguageSwitcher(props) {
   const { i18n } = useTranslation();
+  const theme = useTheme();
   const languages = [
     { id: 'en', title: 'English', flag: enFlag },
     { id: 'fr', title: 'Frensh', flag: frFlag },
     { id: 'es', title: 'Spanish', flag: esFlag },
   ]
-  const currentLanguage = languages.filter(lng => lng.id === i18n.language)[0];
+  const currentLanguage = languages.filter(lng => lng.id === i18n.language)[0] || languages[0];
 
   const [menu, setMenu] = useState(null);
 
@@ -42,17 +46,32 @@ function LanguageSwitcher(props) {
 
   return (
     <>
-      <Button className="h-40 w-64" onClick={langMenuClick}>
+      <ButtonBase
+        sx={{
+          ...theme.typography.commonAvatar,
+          ...theme.typography.mediumAvatar,
+          transition: 'all .2s ease-in-out',
+          borderRadius: '8px',
+          ml: 2,
+          background: theme.palette.secondary.light,
+          color: theme.palette.secondary.dark,
+          '&[aria-controls="menu-list-grow"],&:hover': {
+            background: theme.palette.secondary.dark,
+            color: theme.palette.secondary.light
+          }
+        }}
+        onClick={langMenuClick}
+      >
         <img
           className="mx-4 min-w-20 max-w-30"
           src={currentLanguage.flag}
           alt={currentLanguage.title}
         />
 
-        <Typography className="mx-4 font-semibold uppercase" color="text.secondary">
+        {/* <Typography className="mx-4 font-semibold uppercase" color="text.secondary">
           {currentLanguage.id}
-        </Typography>
-      </Button>
+        </Typography> */}
+      </ButtonBase>
 
       <Popover
         open={Boolean(menu)}

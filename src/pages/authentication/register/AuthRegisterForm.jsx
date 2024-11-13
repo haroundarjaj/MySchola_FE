@@ -13,6 +13,7 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import UserAvatar from 'assets/images/avatars/general-avatar.svg';
 
 import * as Yup from 'yup';
 import { Field, Formik } from 'formik';
@@ -23,12 +24,13 @@ import { strengthColor, strengthIndicator } from 'utils/password-strength';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useTranslation } from 'react-i18next';
-import { MenuItem, Select } from '@mui/material';
+import { Avatar, MenuItem, Select } from '@mui/material';
 import { IconGenderFemale, IconGenderMale } from '@tabler/icons-react';
 import { MuiTelInput } from 'mui-tel-input';
 import { DateField } from '@mui/x-date-pickers';
 import { useNotification } from 'utils/NotificationProvider';
 import { register } from 'services/AuthService';
+import ImageUploader from 'components/ui-component/ImageUploader';
 
 const AuthRegisterForm = ({ ...others }) => {
   const theme = useTheme();
@@ -40,6 +42,8 @@ const AuthRegisterForm = ({ ...others }) => {
 
   const [strength, setStrength] = useState(0);
   const [level, setLevel] = useState();
+  const [isOpenImageUploader, setIsOpenImageUploader] = useState(false);
+  const [uploadedImage, setUploadedImage] = useState(null);
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -72,10 +76,17 @@ const AuthRegisterForm = ({ ...others }) => {
         console.log(values.birthDate.format('DD/MM/YYYY'))
         const user = {
           ...values,
-          bidrthDate: values.birthDate.format('DD/MM/YYYY')
+          bidrthDate: values.birthDate.format('DD/MM/YYYY'),
+          // imageData: uploadedImage
         }
 
-        register(user).then(response => {
+        const formDataObj = new FormData();
+        formDataObj.append('user', new Blob([JSON.stringify(user)], {
+          type: 'application/json'
+        }));
+        formDataObj.append('image', uploadedImage);
+
+        register(formDataObj).then(response => {
           console.log(response);
           showNotification("User created successfully", "success")
           navigate("login")
@@ -95,6 +106,12 @@ const AuthRegisterForm = ({ ...others }) => {
 
   return (
     <>
+      <ImageUploader
+        image={uploadedImage}
+        isOpen={isOpenImageUploader}
+        onClose={() => setIsOpenImageUploader(false)}
+        onSave={(data) => setUploadedImage(data)}
+      />
       <Formik
         initialValues={{
           email: '',
@@ -125,35 +142,89 @@ const AuthRegisterForm = ({ ...others }) => {
         {({ errors, handleBlur, handleChange, handleSubmit, setFieldValue, isSubmitting, touched, values }) => (
           <form noValidate onSubmit={handleSubmit} {...others}>
             <Grid container spacing={2} sx={{ mb: 1 }}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={4} display="flex" alignItems="center" justifyContent="center">
+                {console.log("uploadedImage")}
+                {console.log(uploadedImage)}
+                <Avatar
+                  alt="Avatar"
+                  src={uploadedImage || UserAvatar}
+                  sx={{ width: 120, height: 120, cursor: "pointer" }}
+                  onClick={() => setIsOpenImageUploader(true)}
+                />
+              </Grid>
+              <Grid item xs={12} sm={8} container spacing={2}>
+                <Grid item xs={12} >
+                  <Field
+                    as={TextField}
+                    fullWidth
+                    label={tGeneral('first_name')}
+                    name="firstName"
+                    type="text"
+                    onChange={(e) => {
+                      const capitalizedValue = capitalizeFirstLetter(e.target.value);
+                      setFieldValue('firstName', capitalizedValue);
+                    }}
+                    error={Boolean(touched.firstName && errors.firstName)}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <Field
+                    as={TextField}
+                    fullWidth
+                    label={tGeneral('last_name')}
+                    name="lastName"
+                    type="text"
+                    onChange={(e) => {
+                      const capitalizedValue = capitalizeFirstLetter(e.target.value);
+                      setFieldValue('lastName', capitalizedValue);
+                    }}
+                    error={Boolean(touched.lastName && errors.lastName)}
+                  />
+                </Grid>
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">{tGeneral('gender')}</InputLabel>
+                  <Select
+                    name='gender'
+                    label={tGeneral('gender')}
+                    onChange={handleChange}
+                    value={values.gender}
+                    error={Boolean(touched.gender && errors.gender)}
+                  >
+                    <MenuItem value="Male">
+                      <IconGenderMale stroke={1} size="1rem" />
+                      <span style={{ marginLeft: 10 }}>{tGeneral('male')}</span>
+                    </MenuItem>
+                    <MenuItem value="Female">
+                      <IconGenderFemale stroke={1} size="1rem" />
+                      <span style={{ marginLeft: 10 }}>{tGeneral('female')}</span>
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={8}>
                 <Field
                   as={TextField}
                   fullWidth
-                  label={tAuth('first_name')}
-                  name="firstName"
+                  label={tGeneral('address')}
+                  name="address"
                   type="text"
-                  onChange={(e) => {
-                    const capitalizedValue = capitalizeFirstLetter(e.target.value);
-                    setFieldValue('firstName', capitalizedValue);
-                  }}
-                  error={Boolean(touched.firstName && errors.firstName)}
+                  error={Boolean(touched.address && errors.address)}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <Field
-                  as={TextField}
+              <Grid item xs={12} sm={4}>
+                <DateField
+                  label={tGeneral('birth_date')}
+                  name='birthDate'
                   fullWidth
-                  label={tAuth('last_name')}
-                  name="lastName"
-                  type="text"
-                  onChange={(e) => {
-                    const capitalizedValue = capitalizeFirstLetter(e.target.value);
-                    setFieldValue('lastName', capitalizedValue);
-                  }}
-                  error={Boolean(touched.lastName && errors.lastName)}
+                  value={values.birthday}
+                  onChange={(date) => setFieldValue('birthDate', date)}
+                  format="DD-MM-YYYY"
+                  error={Boolean(touched.birthDate && errors.birthDate)}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={8}>
                 <MuiTelInput
                   name='phone'
                   defaultCountry="MA"
@@ -163,57 +234,15 @@ const AuthRegisterForm = ({ ...others }) => {
                   error={Boolean(touched.phone && errors.phone)}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <Field
-                  as={TextField}
-                  fullWidth
-                  label={tAuth('address')}
-                  name="address"
-                  type="text"
-                  error={Boolean(touched.address && errors.address)}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">{tAuth('gender')}</InputLabel>
-                  <Select
-                    name='gender'
-                    label={tAuth('gender')}
-                    onChange={handleChange}
-                    value={values.gender}
-                    error={Boolean(touched.gender && errors.gender)}
-                  >
-                    <MenuItem value="Male">
-                      <IconGenderMale stroke={1} size="1rem" />
-                      <span style={{ marginLeft: 10 }}>{tAuth('male')}</span>
-                    </MenuItem>
-                    <MenuItem value="Female">
-                      <IconGenderFemale stroke={1} size="1rem" />
-                      <span style={{ marginLeft: 10 }}>{tAuth('female')}</span>
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <DateField
-                  label={tAuth('birth_date')}
-                  name='birthDate'
-                  fullWidth
-                  value={values.birthday}
-                  onChange={(date) => setFieldValue('birthDate', date)}
-                  format="DD-MM-YYYY"
-                  error={Boolean(touched.birthDate && errors.birthDate)}
-                />
-              </Grid>
               <Grid item xs={12}>
                 <FormControl fullWidth error={Boolean(touched.email && errors.email)}>
-                  <InputLabel htmlFor="outlined-adornment-email-register">{tAuth('email')}</InputLabel>
+                  <InputLabel htmlFor="outlined-adornment-email-register">{tGeneral('email')}</InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-email-register"
                     type="email"
                     value={values.email}
                     name="email"
-                    label={tAuth('email')}
+                    label={tGeneral('email')}
                     onBlur={handleBlur}
                     onChange={(e) => {
                       setFieldValue("email", e.target.value.toLowerCase())
@@ -229,13 +258,13 @@ const AuthRegisterForm = ({ ...others }) => {
               </Grid>
               <Grid item xs={12} sm={9}>
                 <FormControl fullWidth error={Boolean(touched.password && errors.password)}>
-                  <InputLabel htmlFor="outlined-adornment-password-register">{tAuth('password')}</InputLabel>
+                  <InputLabel htmlFor="outlined-adornment-password-register">{tGeneral('password')}</InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-password-register"
                     type={showPassword ? 'text' : 'password'}
                     value={values.password}
                     name="password"
-                    label={tAuth('password')}
+                    label={tGeneral('password')}
                     onBlur={handleBlur}
                     onChange={(e) => {
                       handleChange(e);

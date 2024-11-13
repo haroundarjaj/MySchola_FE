@@ -11,8 +11,8 @@ import PrivateRoute from '../PrivateRoute';
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 
 // users management routing
-const UsersPage = Loadable(lazy(() => import('pages/user-management/users')));
-const RolesPage = Loadable(lazy(() => import('pages/user-management/roles')));
+const UsersPage = Loadable(lazy(() => import('pages/administration/users')));
+const RolesPage = Loadable(lazy(() => import('pages/administration/roles')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 

@@ -19,6 +19,7 @@ import { IconChevronRight, IconTallymark1 } from '@tabler/icons-react';
 import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone';
 import HomeIcon from '@mui/icons-material/Home';
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone';
+import { useTranslation } from 'react-i18next';
 
 // ==============================|| BREADCRUMBS TITLE ||============================== //
 
@@ -56,6 +57,7 @@ const Breadcrumbs = ({
 }) => {
   const theme = useTheme();
   const location = useLocation();
+  const tNavigation = useTranslation("navigation").t;
   const [main, setMain] = useState();
   const [item, setItem] = useState();
 
@@ -78,7 +80,9 @@ const Breadcrumbs = ({
   let customLocation = location.pathname;
 
   useEffect(() => {
-    navigation?.items?.map((menu) => {
+    navigation(tNavigation)?.map((menu) => {
+      console.log("menu")
+      console.log(menu)
       if (menu.type && menu.type === 'group') {
         if (menu?.url && menu.url === customLocation) {
           setMain(menu);
@@ -89,7 +93,7 @@ const Breadcrumbs = ({
       }
       return false;
     });
-  });
+  }, [location]);
 
   // set active item state
   const getCollapse = (menu) => {

@@ -1,4 +1,4 @@
-const locale = {
+const data = {
     dashboard: "Dashboard",
     pages: "Pages",
     management_section: "Management Section",
@@ -19,4 +19,4 @@ const locale = {
     permissions: "Permissions"
 }
 
-export default locale;
+export default data;

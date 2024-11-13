@@ -22,7 +22,7 @@ import Chip from 'components/ui-component/extended/Chip';
 
 // assets
 import { IconBrandTelegram, IconBuildingStore, IconMailbox, IconPhoto } from '@tabler/icons-react';
-import User1 from 'assets/images/users/super-admin-avatar.png';
+import User1 from 'assets/images/avatars/super-admin-avatar.png';
 
 const ListItemWrapper = ({ children }) => {
   return (
